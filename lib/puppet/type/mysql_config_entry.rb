@@ -21,7 +21,7 @@ Puppet::Type.newtype(:mysql_config_entry) do
     desc "Value to set for the name."
   end
 
-  newproperty(:section) do
+  newparam(:section) do
     desc "The section under which to store the configuration entry."
     isnamevar
   end

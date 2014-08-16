@@ -6,7 +6,8 @@ Puppet::Type.type(:mysql_config_entry).provide(:augeas, :parent => Puppet::Type.
   lens { 'MySQL.lns' }
 
   resource_path do |resource|
-    "$target/target[.='#{resource[:section]}']/#{resource[:name]}"
+    _, split = resource[:name].split('/')
+    "$target/target[.='#{resource[:section]}']/#{split}"
   end
 
   mk_resource_methods
@@ -42,6 +43,5 @@ Puppet::Type.type(:mysql_config_entry).provide(:augeas, :parent => Puppet::Type.
   end
 
   attr_aug_accessor(:value, :label => :resource)
-  attr_aug_accessor(:section, :label => :resource)
 
 end
